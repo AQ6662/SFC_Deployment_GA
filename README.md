@@ -1,5 +1,9 @@
 # 基于改进遗传算法的高可靠性服务功能链部署研究
-.
+
+## 📁 工程目录结构
+
+```text
+.SFC_Deployment_GA/
 ├── CMakeLists.txt
 ├── data
 │   ├── sfc_requests
@@ -21,7 +25,6 @@
     ├── ga_engine.cpp
     ├── main.cpp
     └── topology.cpp
-
 
 ## 🚀 核心改进点
 - **拓扑感知初始化**：在基因生成阶段引入黑名单隔离机制，确保主备路径 100% 物理隔离。

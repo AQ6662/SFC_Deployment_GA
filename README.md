@@ -1,30 +1,31 @@
-##这个项目的总结构
+# 基于改进遗传算法的高可靠性服务功能链部署研究
+.
+├── CMakeLists.txt
+├── data
+│   ├── sfc_requests
+│   └── topology_zoo
+├── include
+│   ├── baseline_algorithm.h
+│   ├── ga_engine.h
+│   ├── request_reader.h
+│   ├── sfc_model.h
+│   ├── topology.h
+│   └── topology_reader.h
+├── output
+├── README.md
+├── scripts
+│   ├── generate_requests.py
+│   ├── parse_gml.py
+│   └── plot_results.py
+└── src
+    ├── ga_engine.cpp
+    ├── main.cpp
+    └── topology.cpp
 
 
-SFC_Deployment_GA/
-├── data/                  # 【数据层】
-│   ├── topology_zoo/      # 存放从师兄那里搞来的真实拓扑 .gml 或 .txt 文件
-│   └── sfc_requests/      # 存放生成的 SFC 请求数据
-│
-├── include/               # 【头文件/接口层】(你的结构化模型都在这)
-│   ├── topology.h         # 定义 PhysicalNode, PhysicalLink 结构体
-│   ├── sfc_model.h        # 定义 虚拟节点和虚拟链路 结构体
-│   └── ga_engine.h        # 定义 遗传算法的类和接口 (交叉、变异、适应度)
-│
-├── src/                   # 【实现层】(脏活累活都在这)
-│   ├── topology.cpp       # 实现读取数据文件、初始化网络的逻辑
-│   ├── ga_engine.cpp      # 实现遗传算法的具体核心逻辑
-│   └── main.cpp           # 程序入口：加载拓扑 -> 跑算法 -> 输出结果
-│
-├── scripts/               # 【脚本层】(Python的战场)
-│   ├── parse_gml.py       # (可选) 用 Python 把难读的 gml 转成好读的 txt
-│   └── plot_results.py    # 读取 C++ 输出的 CSV 文件，画出精美的折线图
-│
-├── output/                # 【输出层】
-│   └── result_data.csv    # C++ 跑完算法后输出的原始数据
-│
-└── Makefile               # (或 CMakeLists.txt) 编译配置文件，一键编译
-
+## 🚀 核心改进点
+- **拓扑感知初始化**：在基因生成阶段引入黑名单隔离机制，确保主备路径 100% 物理隔离。
+- **动态深度剪枝**：针对中大型网络（如 Atmnet），优化 DFS 搜索深度，防止计算爆炸。
 
 事件记录
 

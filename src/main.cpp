@@ -19,7 +19,7 @@ int main() {
     vector<PhysicalLink> physical_links;
     
     // 1. 读取物理网络拓扑
-    string gml_filepath = "data/topology_zoo/Atmnet.gml";
+    string gml_filepath = "data/topology_zoo/Chinanet.gml";
     cout << "[系统] 正在初始化底层物理网络: " << gml_filepath << " ..." << endl;
     TopologyReader::readGML(gml_filepath, physical_nodes, physical_links);
 
@@ -54,7 +54,7 @@ int main() {
         
         // 调用 GA 引擎 (种群: 30, 进化代数: 50)
         GAEngine::Chromosome best_solution = GAEngine::Run(
-            physical_nodes, physical_links, task.req, task.source_id, task.dest_id, 30, 50
+            physical_nodes, physical_links, task.req, task.source_id, task.dest_id, 50, 50
         );
 
         if (!best_solution.primary_path.empty()) {
